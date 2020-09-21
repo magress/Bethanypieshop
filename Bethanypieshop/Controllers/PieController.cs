@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bethanypieshop.Models;
+using Bethanypieshop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bethanypieshop.Controllers
@@ -20,10 +21,11 @@ namespace Bethanypieshop.Controllers
 
         public ViewResult List() 
         {
-            
-            ViewBag.CurrentCategory = "Cheese cakes";
 
-            return View(_pieRepository.AllPies);
+            PiesListViewModel piesListViewModel = new PiesListViewModel();
+            piesListViewModel.Pies = _pieRepository.AllPies;
+            piesListViewModel.CurrentCategory = "cheese cake";
+            return View(piesListViewModel);
         }
     }
 }
